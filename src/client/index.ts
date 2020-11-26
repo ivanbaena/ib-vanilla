@@ -1,11 +1,13 @@
-import { Header } from './components/Header';
-import { renderRoutes } from '../helpers';
+import { App } from './App';
+import { renderRoutes, onUrlChange } from '../helpers';
 import { Routes } from './Routes';
-// init client app
-export const App = document.getElementById('root');
 
-const header = new Header('#root');
-header.init();
-if (App) {
-  App.innerHTML = renderRoutes(Routes);
-}
+// init client app
+const init = () => {
+  const root = document.getElementById('root');
+  const app = new App.component(renderRoutes(Routes, null));
+  if (root) {
+    root.innerHTML = app.render();
+  }
+};
+onUrlChange(init);

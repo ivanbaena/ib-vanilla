@@ -1,4 +1,5 @@
 import { Bio } from '../components/Bio';
+import { Link } from '../components/Link';
 
 class HomeComponent {
   constructor() {}
@@ -7,6 +8,7 @@ class HomeComponent {
       <div id='home-page'>
         <h1>Home Page</h1>
         ${Bio}
+        ${Link}
       </div>
     `;
   }

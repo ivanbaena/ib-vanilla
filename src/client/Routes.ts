@@ -1,5 +1,6 @@
 import { App } from './App';
-import { Home } from './pages/Home';
+import { Home } from './pages/';
+import { NotFound } from './pages/';
 
 export const Routes = [
   {
@@ -9,6 +10,10 @@ export const Routes = [
         ...Home,
         path: '/',
         exact: true,
+      },
+      {
+        ...NotFound,
+        path: 'not-found',
       },
     ],
   },

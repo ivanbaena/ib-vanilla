@@ -6,47 +6,49 @@ interface ConfigProps {
   characterData: boolean;
 }
 
-export const observe = (
-  target: string,
-  params: ConfigProps,
-  initProps: any
-) => {
-  // Select the node that will be observed for mutations
-  const targetNode = document.querySelector('#root');
-  let link = document.querySelector('#link');
+export class Observe {
+  constructor() {}
+  static domObserver = (
+    target: string,
+    params: ConfigProps,
+    initProps: any
+  ) => {
+    // Select the node that will be observed for mutations
+    const root = document.querySelector('#root');
+    let targetNode = document.querySelector(target);
 
-  // If no target exit
-  if (!targetNode) return;
-  // initlize element props
-  initProps(link);
-  // Options for the observer (which mutations to observe)
-  const config = { ...params };
-  // Callback function to execute when mutations are observed
-  const callback = function (mutationsList: any, observer: any) {
-    // Use traditional 'for loops' for IE 11
-    for (const mutation of mutationsList) {
-      console.log(mutation);
+    // If no targetNode exit
+    if (!root) return;
 
-      if (mutation.type === 'childList') {
-        link = document.querySelector('#link');
-        console.log('A child node has been added or removed.', link);
-        if (link) {
-          debounce(() => initProps(link), 1000);
+    // initlize element props
+    initProps(targetNode);
+
+    // Options for the observer (which mutations to observe)
+    const config = { ...params };
+    // Callback function to execute when mutations are observed
+    const callback = function (mutationsList: any, observer: any) {
+      // Use traditional 'for loops' for IE 11
+      for (const mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+          targetNode = document.querySelector(target);
+          if (targetNode) {
+            debounce(() => initProps(targetNode), 10);
+          }
+        } else if (mutation.type === 'attributes') {
+          console.log(
+            'The ' + mutation.attributeName + ' attribute was modified.'
+          );
         }
-      } else if (mutation.type === 'attributes') {
-        console.log(
-          'The ' + mutation.attributeName + ' attribute was modified.'
-        );
       }
-    }
+    };
+
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(callback);
+
+    // Start observing the target node for configured mutations
+    observer.observe(root, config);
+
+    // // Later, you can stop observing
+    // observer.disconnect();
   };
-
-  // Create an observer instance linked to the callback function
-  const observer = new MutationObserver(callback);
-
-  // Start observing the target node for configured mutations
-  observer.observe(targetNode, config);
-
-  // // Later, you can stop observing
-  // observer.disconnect();
-};
+}

@@ -10,7 +10,6 @@ export const renderRoutes = (routesArray: any, req: Request | null): string => {
   let path: string;
   if (typeof window !== 'undefined') {
     path = window.location.pathname;
-    console.log('path', path);
   } else {
     path = req ? req.originalUrl : '/';
   }

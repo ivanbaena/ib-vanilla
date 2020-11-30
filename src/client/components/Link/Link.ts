@@ -2,21 +2,20 @@ import { pushUrl, Observe, isWindow } from '../../../utils';
 import { Skeleton } from '../Skeleton';
 import { sheet, insertRule } from '../../sheet';
 import { styles } from './Link.css';
+import { LinkSkeleton } from './Skeleton';
 
 interface LinkProps {
   innerHTML?: string;
   to: string;
   id?: string;
-  class?: string;
+  class?: string | undefined;
 }
 /*
  * LinkComponent responsible for handling routing within app
  */
 
-// css demo
-if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-  insertRule(sheet, styles);
-}
+// add css
+insertRule(sheet, styles);
 export class LinkComponent {
   private anchor: HTMLAnchorElement | any;
 
@@ -63,7 +62,9 @@ export class LinkComponent {
       this.anchor.innerHTML = linkProps.innerHTML;
       this.anchor.href = '#';
       this.anchor.id = linkProps.id;
-      this.anchor.classList = `link-route ${linkProps.class}`;
+      this.anchor.classList = `link-route ${
+        linkProps.class && linkProps.class
+      }`;
     }
   }
 
@@ -72,7 +73,7 @@ export class LinkComponent {
       this.createProps(this.linkProps);
       return this.anchor.outerHTML;
     } else {
-      return Skeleton.render();
+      return Skeleton.render(LinkSkeleton);
     }
   }
 }

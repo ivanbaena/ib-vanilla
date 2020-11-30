@@ -4,7 +4,12 @@ const Header = new HeaderComponent().render();
 export const Html = (route: any) => `
     <html lang='en-us'>
       <head>
-        <link rel='stylesheet' href='/main.css' />
+      <title>Ivan!</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="portfolio:javascript developer">
+      <meta name="robots" content="index, follow" />
+      <meta charset="UTF-8">
+      <link rel="icon" href="data:,">
       </head>
       <body>
         <div id='root'>

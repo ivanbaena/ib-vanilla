@@ -19,7 +19,7 @@ export const sheet: null | HTMLStyleElement | any =
 
 export const insertRule = (
   sheet: HTMLStyleElement | null,
-  style: string
+  style: string[]
 ): void => {
   typeof window !== 'undefined' && sheet && clientSheet(sheet, style);
 };
@@ -34,13 +34,15 @@ export const inlineStyle = (style: string): string => {
     .trim();
 };
 
-export const clientSheet = (sheet: HTMLStyleElement, styleString: string) => {
+export const clientSheet = (sheet: HTMLStyleElement, rules: string[]) => {
   if (typeof window !== 'undefined') {
     const domReady = setInterval(() => {
       let in_dom = document.head.contains(sheet);
       if (in_dom) {
         const cssSheet: CSSStyleSheet | null | any = sheet.sheet;
-        cssSheet?.insertRule(styleString);
+        for (const rule of rules) {
+          cssSheet?.insertRule(rule);
+        }
         clearInterval(domReady);
         return;
       }

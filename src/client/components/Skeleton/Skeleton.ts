@@ -1,5 +1,9 @@
+interface SkeletonProps {
+  style: string;
+  component: string;
+}
 export class Skeleton {
-  static render() {
-    return `<h1>Skeleton</h1>`;
+  static render(props: SkeletonProps): string {
+    return `${props.component}`;
   }
 }

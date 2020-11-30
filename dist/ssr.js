@@ -37,6 +37,91 @@ eval("\nvar __assign = (this && this.__assign) || function () {\n    __assign = 
 
 /***/ }),
 
+/***/ "./src/client/components/Grid/Container.css.ts":
+/*!*****************************************************!*\
+  !*** ./src/client/components/Grid/Container.css.ts ***!
+  \*****************************************************/
+/*! flagged exports */
+/*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export styles [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_exports__ */
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.styles = void 0;\nexports.styles = [\n    \".grid.container {\\n    display: grid;\\n    }\\n  \",\n    \".inline-grid.container {\\n    display: inline-grid;\\n    }\\n  \",\n];\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Grid/Container.css.ts?");
+
+/***/ }),
+
+/***/ "./src/client/components/Grid/Container.ts":
+/*!*************************************************!*\
+  !*** ./src/client/components/Grid/Container.ts ***!
+  \*************************************************/
+/*! flagged exports */
+/*! export Container [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_exports__, __webpack_require__ */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Container = void 0;\nvar sheet_1 = __webpack_require__(/*! ../../sheet */ \"./src/client/sheet.ts\");\nvar Container_css_1 = __webpack_require__(/*! ./Container.css */ \"./src/client/components/Grid/Container.css.ts\");\nvar helpers_1 = __webpack_require__(/*! ./helpers/ */ \"./src/client/components/Grid/helpers/index.ts\");\nsheet_1.insertRule(sheet_1.sheet, Container_css_1.styles);\nvar Container = /** @class */ (function () {\n    function Container() {\n    }\n    Container.render = function (children, props) {\n        var containerProps = {\n            container: props,\n            item: {},\n            isContainer: true,\n        };\n        var style = helpers_1.createProps(containerProps);\n        var grid = props.inlineGrid ? 'inline-grid' : 'grid';\n        var className = grid + \" container \" + helpers_1.hasString(props.class);\n        var hasId = helpers_1.hasString(props.id).length !== 0\n            ? \"id='\" + helpers_1.hasString(props.id).trim() + \"'\"\n            : ''.trim();\n        return \"<div \" + hasId + \" class='\" + className.trim() + \"' style=\\\"\" + style + \"\\\">\" + children + \"</div>\";\n    };\n    return Container;\n}());\nexports.Container = Container;\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Grid/Container.ts?");
+
+/***/ }),
+
+/***/ "./src/client/components/Grid/GridItem.ts":
+/*!************************************************!*\
+  !*** ./src/client/components/Grid/GridItem.ts ***!
+  \************************************************/
+/*! flagged exports */
+/*! export GridItem [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_exports__, __webpack_require__ */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.GridItem = void 0;\nvar helpers_1 = __webpack_require__(/*! ./helpers/ */ \"./src/client/components/Grid/helpers/index.ts\");\nvar GridItem = /** @class */ (function () {\n    function GridItem() {\n    }\n    GridItem.render = function (children, props) {\n        var itemProps = {\n            container: {},\n            item: props,\n            isContainer: false,\n        };\n        var style = helpers_1.createProps(itemProps);\n        var className = \"grid item \" + helpers_1.hasString(props.class);\n        var hasId = helpers_1.hasString(props.id).length !== 0\n            ? \"id='\" + helpers_1.hasString(props.id).trim() + \"'\"\n            : ''.trim();\n        return \"<div \" + hasId + \" class='\" + className.trim() + \"' style='\" + style + \"'>\" + children + \"</div>\";\n    };\n    return GridItem;\n}());\nexports.GridItem = GridItem;\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Grid/GridItem.ts?");
+
+/***/ }),
+
+/***/ "./src/client/components/Grid/helpers/gridHelper.ts":
+/*!**********************************************************!*\
+  !*** ./src/client/components/Grid/helpers/gridHelper.ts ***!
+  \**********************************************************/
+/*! flagged exports */
+/*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export createProps [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export hasString [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_exports__ */
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.hasString = exports.createProps = void 0;\nvar createProps = function (_a) {\n    var _b = _a.container, gridTemplateColumns = _b.gridTemplateColumns, gridTemplateRows = _b.gridTemplateRows, gridTemplateAreas = _b.gridTemplateAreas, grid = _b.grid, gap = _b.gap, placeContent = _b.placeContent, gridAutoColumns = _b.gridAutoColumns, gridAutoRows = _b.gridAutoRows, _c = _a.item, gridColumnStart = _c.gridColumnStart, gridColumnEnd = _c.gridColumnEnd, gridRowStart = _c.gridRowStart, gridRowEnd = _c.gridRowEnd, gridArea = _c.gridArea, justifySelf = _c.justifySelf, alignSelf = _c.alignSelf, placeSelf = _c.placeSelf, isContainer = _a.isContainer;\n    var props = isContainer\n        ? {\n            'grid-template-columns': gridTemplateColumns,\n            'grid-template-rows': gridTemplateRows,\n            'grid-template-areas': gridTemplateAreas,\n            grid: grid,\n            gap: gap,\n            'place-content': placeContent,\n            'grid-auto-columns': gridAutoColumns,\n            'grid-auto-rows': gridAutoRows,\n        }\n        : {\n            'grid-column-start': gridColumnStart,\n            'grid-column-end': gridColumnEnd,\n            'grid-row-start': gridRowStart,\n            'grid-row-end': gridRowEnd,\n            'grid-area': gridArea,\n            'justify-self': justifySelf,\n            'align-self': alignSelf,\n            'place-self': placeSelf,\n        };\n    var propString = '';\n    for (var prop in props) {\n        if (typeof props[prop] !== 'undefined') {\n            propString += prop + \":\" + props[prop] + \";\";\n        }\n    }\n    return propString;\n};\nexports.createProps = createProps;\nvar hasString = function (str) {\n    return typeof str === 'undefined' ? '' : str;\n};\nexports.hasString = hasString;\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Grid/helpers/gridHelper.ts?");
+
+/***/ }),
+
+/***/ "./src/client/components/Grid/helpers/index.ts":
+/*!*****************************************************!*\
+  !*** ./src/client/components/Grid/helpers/index.ts ***!
+  \*****************************************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: top-level-this-exports, __webpack_exports__, __webpack_require__ */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\n__exportStar(__webpack_require__(/*! ./gridHelper */ \"./src/client/components/Grid/helpers/gridHelper.ts\"), exports);\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Grid/helpers/index.ts?");
+
+/***/ }),
+
+/***/ "./src/client/components/Grid/index.ts":
+/*!*********************************************!*\
+  !*** ./src/client/components/Grid/index.ts ***!
+  \*********************************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: top-level-this-exports, __webpack_exports__, __webpack_require__ */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\n__exportStar(__webpack_require__(/*! ./GridItem */ \"./src/client/components/Grid/GridItem.ts\"), exports);\n__exportStar(__webpack_require__(/*! ./Container */ \"./src/client/components/Grid/Container.ts\"), exports);\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Grid/index.ts?");
+
+/***/ }),
+
 /***/ "./src/client/components/Header/Header.inline.css.ts":
 /*!***********************************************************!*\
   !*** ./src/client/components/Header/Header.inline.css.ts ***!
@@ -105,7 +190,7 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 /*! runtime requirements: __webpack_exports__ */
 /***/ ((__unused_webpack_module, exports) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.styles = void 0;\nexports.styles = \"\\n  .link-route {\\n    color:green\\n  }\\n\";\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Link/Link.css.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.styles = void 0;\nexports.styles = [\n    \"\\n  .link-route {\\n    color:green\\n  }\\n\",\n];\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Link/Link.css.ts?");
 
 /***/ }),
 
@@ -120,7 +205,22 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.LinkComponent = void 0;\nvar utils_1 = __webpack_require__(/*! ../../../utils */ \"./src/utils/index.ts\");\nvar Skeleton_1 = __webpack_require__(/*! ../Skeleton */ \"./src/client/components/Skeleton/index.ts\");\nvar sheet_1 = __webpack_require__(/*! ../../sheet */ \"./src/client/sheet.ts\");\nvar Link_css_1 = __webpack_require__(/*! ./Link.css */ \"./src/client/components/Link/Link.css.ts\");\n/*\n * LinkComponent responsible for handling routing within app\n */\n// css demo\nif (typeof window !== 'undefined' && typeof document !== 'undefined') {\n    sheet_1.insertRule(sheet_1.sheet, Link_css_1.styles);\n}\nvar LinkComponent = /** @class */ (function () {\n    function LinkComponent(linkProps) {\n        this.linkProps = linkProps;\n        this.didRender();\n        this.createAnchor();\n        this.createEvents = this.createEvents.bind(this);\n        this.createAnchor = this.createAnchor.bind(this);\n    }\n    LinkComponent.prototype.onClick = function (e, url) {\n        e.preventDefault();\n        utils_1.pushUrl(url);\n    };\n    LinkComponent.prototype.createAnchor = function () {\n        if (typeof window !== 'undefined') {\n            this.anchor = document.createElement('a');\n        }\n    };\n    LinkComponent.prototype.didRender = function () {\n        var _this = this;\n        var params = {\n            attributes: true,\n            childList: true,\n            subtree: true,\n            characterData: true,\n        };\n        var observer = function () {\n            return utils_1.Observe.domObserver(\"#\" + _this.linkProps.id, params, _this.createEvents);\n        };\n        utils_1.isWindow(observer);\n    };\n    LinkComponent.prototype.createEvents = function (target) {\n        var _this = this;\n        if (target) {\n            target.onclick = function (e) { return _this.onClick(e, _this.linkProps.to); };\n        }\n    };\n    LinkComponent.prototype.createProps = function (linkProps) {\n        if (this.anchor) {\n            this.anchor.setAttribute('to', linkProps.to);\n            this.anchor.innerHTML = linkProps.innerHTML;\n            this.anchor.href = '#';\n            this.anchor.id = linkProps.id;\n            this.anchor.classList = \"link-route \" + linkProps.class;\n        }\n    };\n    LinkComponent.prototype.render = function () {\n        if (typeof window !== 'undefined' && this.anchor) {\n            this.createProps(this.linkProps);\n            return this.anchor.outerHTML;\n        }\n        else {\n            return Skeleton_1.Skeleton.render();\n        }\n    };\n    return LinkComponent;\n}());\nexports.LinkComponent = LinkComponent;\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Link/Link.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.LinkComponent = void 0;\nvar utils_1 = __webpack_require__(/*! ../../../utils */ \"./src/utils/index.ts\");\nvar Skeleton_1 = __webpack_require__(/*! ../Skeleton */ \"./src/client/components/Skeleton/index.ts\");\nvar sheet_1 = __webpack_require__(/*! ../../sheet */ \"./src/client/sheet.ts\");\nvar Link_css_1 = __webpack_require__(/*! ./Link.css */ \"./src/client/components/Link/Link.css.ts\");\nvar Skeleton_2 = __webpack_require__(/*! ./Skeleton */ \"./src/client/components/Link/Skeleton.ts\");\n/*\n * LinkComponent responsible for handling routing within app\n */\n// add css\nsheet_1.insertRule(sheet_1.sheet, Link_css_1.styles);\nvar LinkComponent = /** @class */ (function () {\n    function LinkComponent(linkProps) {\n        this.linkProps = linkProps;\n        this.didRender();\n        this.createAnchor();\n        this.createEvents = this.createEvents.bind(this);\n        this.createAnchor = this.createAnchor.bind(this);\n    }\n    LinkComponent.prototype.onClick = function (e, url) {\n        e.preventDefault();\n        utils_1.pushUrl(url);\n    };\n    LinkComponent.prototype.createAnchor = function () {\n        if (typeof window !== 'undefined') {\n            this.anchor = document.createElement('a');\n        }\n    };\n    LinkComponent.prototype.didRender = function () {\n        var _this = this;\n        var params = {\n            attributes: true,\n            childList: true,\n            subtree: true,\n            characterData: true,\n        };\n        var observer = function () {\n            return utils_1.Observe.domObserver(\"#\" + _this.linkProps.id, params, _this.createEvents);\n        };\n        utils_1.isWindow(observer);\n    };\n    LinkComponent.prototype.createEvents = function (target) {\n        var _this = this;\n        if (target) {\n            target.onclick = function (e) { return _this.onClick(e, _this.linkProps.to); };\n        }\n    };\n    LinkComponent.prototype.createProps = function (linkProps) {\n        if (this.anchor) {\n            this.anchor.setAttribute('to', linkProps.to);\n            this.anchor.innerHTML = linkProps.innerHTML;\n            this.anchor.href = '#';\n            this.anchor.id = linkProps.id;\n            this.anchor.classList = \"link-route \" + (linkProps.class && linkProps.class);\n        }\n    };\n    LinkComponent.prototype.render = function () {\n        if (typeof window !== 'undefined' && this.anchor) {\n            this.createProps(this.linkProps);\n            return this.anchor.outerHTML;\n        }\n        else {\n            return Skeleton_1.Skeleton.render(Skeleton_2.LinkSkeleton);\n        }\n    };\n    return LinkComponent;\n}());\nexports.LinkComponent = LinkComponent;\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Link/Link.ts?");
+
+/***/ }),
+
+/***/ "./src/client/components/Link/Skeleton.ts":
+/*!************************************************!*\
+  !*** ./src/client/components/Link/Skeleton.ts ***!
+  \************************************************/
+/*! flagged exports */
+/*! export LinkSkeleton [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_exports__, __webpack_require__ */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.LinkSkeleton = void 0;\nvar styles_1 = __webpack_require__(/*! ../../styles/ */ \"./src/client/styles/index.ts\");\nexports.LinkSkeleton = {\n    style: \"<style>\\n  .skeleton {\\n    background-color: \" + styles_1.skeletonColor + \";\\n  }\\n  .link {\\n    height: 30px;\\n    width: 90px;\\n    margin-right: 1rem;\\n  }\\n</style>\",\n    component: \"<div class=\\\"skeleton link\\\" style=\\\"background-color: \" + styles_1.skeletonColor + \"; height: 30px;width: 90px;margin-right: 1rem;\\\"></div>\\n\",\n};\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Link/Skeleton.ts?");
 
 /***/ }),
 
@@ -147,7 +247,7 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 /*! runtime requirements: __webpack_exports__ */
 /***/ ((__unused_webpack_module, exports) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Skeleton = void 0;\nvar Skeleton = /** @class */ (function () {\n    function Skeleton() {\n    }\n    Skeleton.render = function () {\n        return \"<h1>Skeleton</h1>\";\n    };\n    return Skeleton;\n}());\nexports.Skeleton = Skeleton;\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Skeleton/Skeleton.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Skeleton = void 0;\nvar Skeleton = /** @class */ (function () {\n    function Skeleton() {\n    }\n    Skeleton.render = function (props) {\n        return \"\" + props.component;\n    };\n    return Skeleton;\n}());\nexports.Skeleton = Skeleton;\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Skeleton/Skeleton.ts?");
 
 /***/ }),
 
@@ -171,10 +271,10 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 /*! export Home [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_exports__ */
-/***/ ((__unused_webpack_module, exports) => {
+/*! runtime requirements: __webpack_exports__, __webpack_require__ */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Home = void 0;\nvar HomeComponent = /** @class */ (function () {\n    function HomeComponent() {\n    }\n    HomeComponent.prototype.render = function () {\n        return \"\\n      <div id='home-page'>\\n        <h1>Home Page</h1>\\n      </div>\\n    \";\n    };\n    return HomeComponent;\n}());\nexports.Home = {\n    component: HomeComponent,\n};\n\n\n//# sourceURL=webpack://ivan/./src/client/pages/Home.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Home = void 0;\nvar Grid_1 = __webpack_require__(/*! ../components/Grid */ \"./src/client/components/Grid/index.ts\");\nvar renderGrid = function () {\n    return [\n        { region: 'main', name: 'main-1', gridColumnStart: '2' },\n        { region: 'main', name: 'main-2', gridColumnStart: '2' },\n        { region: 'main', name: 'main-3', gridColumnStart: '2' },\n        { region: 'header', name: 'header-1', gridColumnStart: '1' },\n        { region: 'header', name: 'header-2', gridColumnStart: '1' },\n        { region: 'header', name: 'header-3', gridColumnStart: '1' },\n        { region: 'footer', name: 'footer-1', gridColumnStart: '3' },\n        { region: 'footer', name: 'footer-2', gridColumnStart: '3' },\n        { region: 'footer', name: 'footer-3', gridColumnStart: '3' },\n    ]\n        .map(function (item) {\n        return Grid_1.GridItem.render(item.name, {\n            gridArea: item.region + \" \" + item.gridColumnStart,\n        });\n    })\n        .join('');\n};\nvar HomeComponent = /** @class */ (function () {\n    function HomeComponent() {\n    }\n    HomeComponent.prototype.render = function () {\n        return \"\\n      <div id='home-page'>\\n        \" + Grid_1.Container.render(renderGrid(), {\n            grid: \"\\n          'header header header'\\n          'main   main   main  '\\n          'footer footer footer'\\n          \",\n            gap: '10px 15px',\n            class: 'home-grid',\n        }) + \"\\n      </div>\\n    \";\n    };\n    return HomeComponent;\n}());\nexports.Home = {\n    component: HomeComponent,\n};\n\n\n//# sourceURL=webpack://ivan/./src/client/pages/Home.ts?");
 
 /***/ }),
 
@@ -189,7 +289,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.NotFound = void 0;\nvar Link_1 = __webpack_require__(/*! ../components/Link/ */ \"./src/client/components/Link/index.ts\");\nvar sheet_1 = __webpack_require__(/*! ../sheet */ \"./src/client/sheet.ts\");\nvar HomeLink = new Link_1.LinkComponent({\n    innerHTML: 'Back',\n    to: '/',\n    id: 'back-btn',\n}).render();\n// demo css overwrite same component\nsheet_1.insertRule(sheet_1.sheet, '#back-btn {color:yellow; background:black; padding:1rem;}');\nvar NotFoundComponent = /** @class */ (function () {\n    function NotFoundComponent() {\n    }\n    NotFoundComponent.prototype.render = function () {\n        return \"\\n      <div id='not-found'>\\n        <h1>We're sorry!</h1>\\n        \" + HomeLink + \"\\n      </div>\\n    \";\n    };\n    return NotFoundComponent;\n}());\nexports.NotFound = {\n    component: NotFoundComponent,\n};\n\n\n//# sourceURL=webpack://ivan/./src/client/pages/NotFound.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.NotFound = void 0;\nvar Link_1 = __webpack_require__(/*! ../components/Link/ */ \"./src/client/components/Link/index.ts\");\nvar sheet_1 = __webpack_require__(/*! ../sheet */ \"./src/client/sheet.ts\");\nvar HomeLink = new Link_1.LinkComponent({\n    innerHTML: 'Back',\n    to: '/',\n    id: 'back-btn',\n}).render();\n// demo css overwrite same component\nsheet_1.insertRule(sheet_1.sheet, [\n    '#back-btn {color:yellow; background:black; padding:1rem;}',\n]);\nvar NotFoundComponent = /** @class */ (function () {\n    function NotFoundComponent() {\n    }\n    NotFoundComponent.prototype.render = function () {\n        return \"\\n      <div id='not-found'>\\n        <h1>We're sorry!</h1>\\n        \" + HomeLink + \"\\n      </div>\\n    \";\n    };\n    return NotFoundComponent;\n}());\nexports.NotFound = {\n    component: NotFoundComponent,\n};\n\n\n//# sourceURL=webpack://ivan/./src/client/pages/NotFound.ts?");
 
 /***/ }),
 
@@ -217,10 +317,36 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 /*! export sheet [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: __webpack_exports__ */
-/*! CommonJS bailout: exports.clientSheet(...) prevents optimization as exports is passed as call context at 21:46-65 */
 /***/ ((__unused_webpack_module, exports) => {
 
-eval("\n/* Constructed css sheet - chrome only */\n// export const sheet: undefined | CSSStyleSheet =\n//   typeof window !== 'undefined' ? new CSSStyleSheet() : undefined;\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.clientSheet = exports.inlineStyle = exports.insertRule = exports.sheet = void 0;\n// const style: HTMLStyleElement | undefined =\n//   typeof window !== 'undefined' ? document.createElement('style') : undefined;\nvar Sheet = /** @class */ (function () {\n    function Sheet(id) {\n        this.id = id;\n        this.id = id;\n        var a = document.createElement('style');\n        a.id = id;\n        return a;\n    }\n    return Sheet;\n}());\nexports.sheet = typeof window !== 'undefined' ? new Sheet('main') : null;\nvar insertRule = function (sheet, style) {\n    typeof window !== 'undefined' && sheet && exports.clientSheet(sheet, style);\n};\nexports.insertRule = insertRule;\nvar inlineStyle = function (style) {\n    return (\"\\n    <style>\\n      \" + style.replace(/\\n|\\r/g, '').trim() + \"\\n    </style>\\n  \")\n        .replace(/\\n|\\r/g, '')\n        .trim();\n};\nexports.inlineStyle = inlineStyle;\nvar clientSheet = function (sheet, styleString) {\n    if (typeof window !== 'undefined') {\n        var domReady_1 = setInterval(function () {\n            var in_dom = document.head.contains(sheet);\n            if (in_dom) {\n                var cssSheet = sheet.sheet;\n                cssSheet === null || cssSheet === void 0 ? void 0 : cssSheet.insertRule(styleString);\n                clearInterval(domReady_1);\n                return;\n            }\n        }, 10);\n    }\n};\nexports.clientSheet = clientSheet;\n\n\n//# sourceURL=webpack://ivan/./src/client/sheet.ts?");
+eval("\n/* Constructed css sheet - chrome only */\n// export const sheet: undefined | CSSStyleSheet =\n//   typeof window !== 'undefined' ? new CSSStyleSheet() : undefined;\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.clientSheet = exports.inlineStyle = exports.insertRule = exports.sheet = void 0;\n// const style: HTMLStyleElement | undefined =\n//   typeof window !== 'undefined' ? document.createElement('style') : undefined;\nvar Sheet = /** @class */ (function () {\n    function Sheet(id) {\n        this.id = id;\n        this.id = id;\n        var a = document.createElement('style');\n        a.id = id;\n        return a;\n    }\n    return Sheet;\n}());\nexports.sheet = typeof window !== 'undefined' ? new Sheet('main') : null;\nvar insertRule = function (sheet, style) {\n    typeof window !== 'undefined' && sheet && exports.clientSheet(sheet, style);\n};\nexports.insertRule = insertRule;\nvar inlineStyle = function (style) {\n    return (\"\\n    <style>\\n      \" + style.replace(/\\n|\\r/g, '').trim() + \"\\n    </style>\\n  \")\n        .replace(/\\n|\\r/g, '')\n        .trim();\n};\nexports.inlineStyle = inlineStyle;\nvar clientSheet = function (sheet, rules) {\n    if (typeof window !== 'undefined') {\n        var domReady_1 = setInterval(function () {\n            var in_dom = document.head.contains(sheet);\n            if (in_dom) {\n                var cssSheet = sheet.sheet;\n                for (var _i = 0, rules_1 = rules; _i < rules_1.length; _i++) {\n                    var rule = rules_1[_i];\n                    cssSheet === null || cssSheet === void 0 ? void 0 : cssSheet.insertRule(rule);\n                }\n                clearInterval(domReady_1);\n                return;\n            }\n        }, 10);\n    }\n};\nexports.clientSheet = clientSheet;\n\n\n//# sourceURL=webpack://ivan/./src/client/sheet.ts?");
+
+/***/ }),
+
+/***/ "./src/client/styles/index.ts":
+/*!************************************!*\
+  !*** ./src/client/styles/index.ts ***!
+  \************************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: top-level-this-exports, __webpack_exports__, __webpack_require__ */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\n__exportStar(__webpack_require__(/*! ./variables.css */ \"./src/client/styles/variables.css.ts\"), exports);\n\n\n//# sourceURL=webpack://ivan/./src/client/styles/index.ts?");
+
+/***/ }),
+
+/***/ "./src/client/styles/variables.css.ts":
+/*!********************************************!*\
+  !*** ./src/client/styles/variables.css.ts ***!
+  \********************************************/
+/*! flagged exports */
+/*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export skeletonColor [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_exports__ */
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.skeletonColor = void 0;\n/* Skeleton color */\nexports.skeletonColor = 'hsl(0,0%,89%)';\n\n\n//# sourceURL=webpack://ivan/./src/client/styles/variables.css.ts?");
 
 /***/ }),
 
@@ -235,7 +361,7 @@ eval("\n/* Constructed css sheet - chrome only */\n// export const sheet: undefi
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Html = void 0;\nvar Header_1 = __webpack_require__(/*! ../client/components/Header */ \"./src/client/components/Header/index.ts\");\nvar Header = new Header_1.Header().render();\nvar Html = function (route) { return \"\\n    <html lang='en-us'>\\n      <head>\\n        <link rel='stylesheet' href='/main.css' />\\n      </head>\\n      <body>\\n        <div id='root'>\\n        \" + Header + \"\\n        \" + route + \"\\n        </div>\\n        <script src='/bundle.js'></script>\\n      </body>\\n    </html>\"; };\nexports.Html = Html;\n\n\n//# sourceURL=webpack://ivan/./src/helpers/Html.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Html = void 0;\nvar Header_1 = __webpack_require__(/*! ../client/components/Header */ \"./src/client/components/Header/index.ts\");\nvar Header = new Header_1.Header().render();\nvar Html = function (route) { return \"\\n    <html lang='en-us'>\\n      <head>\\n      <title>Ivan!</title>\\n      <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1\\\">\\n      <meta name=\\\"description\\\" content=\\\"portfolio:javascript developer\\\">\\n      <meta name=\\\"robots\\\" content=\\\"index, follow\\\" />\\n      <meta charset=\\\"UTF-8\\\">\\n      <link rel=\\\"icon\\\" href=\\\"data:,\\\">\\n      </head>\\n      <body>\\n        <div id='root'>\\n        \" + Header + \"\\n        \" + route + \"\\n        </div>\\n        <script src='/bundle.js'></script>\\n      </body>\\n    </html>\"; };\nexports.Html = Html;\n\n\n//# sourceURL=webpack://ivan/./src/helpers/Html.ts?");
 
 /***/ }),
 

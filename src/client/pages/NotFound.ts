@@ -8,7 +8,9 @@ const HomeLink = new LinkComponent({
 }).render();
 
 // demo css overwrite same component
-insertRule(sheet, '#back-btn {color:yellow; background:black; padding:1rem;}');
+insertRule(sheet, [
+  '#back-btn {color:yellow; background:black; padding:1rem;}',
+]);
 
 class NotFoundComponent {
   constructor() {}

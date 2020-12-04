@@ -16,4 +16,5 @@ const init = () => {
     throw new Error('An Error has occurred');
   }
 };
+// "Hydrate"
 onUrlChange(init);

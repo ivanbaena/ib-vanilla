@@ -31,6 +31,6 @@ export class Container {
         ? `id='${hasString(props.id).trim()}'`
         : ''.trim();
 
-    return `<div ${hasId} class='${className.trim()}' style="${style}">${children}</div>`;
+    return `<div ${hasId} class='${className.trim()}' style="display:${grid};${style}">${children}</div>`;
   }
 }

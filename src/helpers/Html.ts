@@ -1,6 +1,12 @@
 import { Header as HeaderComponent } from '../client/components/Header';
+import { Footer as FooterComponent } from '../client/components/Footer';
+import { Sidebar as SidebarComponent } from '../client/components/Sidebar';
+import { Grid } from '../client/App';
 
 const Header = new HeaderComponent().render();
+const Footer = FooterComponent.render();
+const Sidebar = SidebarComponent.render();
+
 export const Html = (route: any) => `
     <html lang='en-us'>
       <head>
@@ -13,8 +19,12 @@ export const Html = (route: any) => `
       </head>
       <body>
         <div id='root'>
-        ${Header}
-        ${route}
+        ${Grid(`        
+            ${Header}
+            ${Sidebar}
+            ${route}
+            ${Footer}
+          `)}
         </div>
         <script src='/bundle.js'></script>
       </body>

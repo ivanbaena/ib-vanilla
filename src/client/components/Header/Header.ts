@@ -3,7 +3,7 @@ import { navData } from './data';
 import { styles } from './Header.inline.css';
 import { inlineStyle } from '../../sheet';
 
-const style = inlineStyle(styles);
+const style = inlineStyle(styles).trim();
 export class Header {
   constructor() {
     this.renderNavItems = this.renderNavItems.bind(this);
@@ -28,6 +28,6 @@ export class Header {
   }
 
   render() {
-    return `${style}<header class="header">${this.renderNavItems()}</header>`;
+    return `${style}<header class="header" style="grid-area:header;">${this.renderNavItems()}</header>`;
   }
 }

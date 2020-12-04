@@ -1,7 +1,10 @@
 export const styles = [
   `
   .link-route {
-    color:green
+    text-decoration: none;
   }
 `,
+  `.link-route:hover {
+  color:purple;
+}`,
 ];

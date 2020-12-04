@@ -14,14 +14,28 @@
 /*!***************************!*\
   !*** ./src/client/App.ts ***!
   \***************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: top-level-this-exports, __webpack_exports__, __webpack_require__ */
+/*! CommonJS bailout: this is used directly at 2:17-21 */
+/*! CommonJS bailout: exports.Grid(...) prevents optimization as exports is passed as call context at 55:15-27 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+eval("\nvar __extends = (this && this.__extends) || (function () {\n    var extendStatics = function (d, b) {\n        extendStatics = Object.setPrototypeOf ||\n            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||\n            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };\n        return extendStatics(d, b);\n    };\n    return function (d, b) {\n        extendStatics(d, b);\n        function __() { this.constructor = d; }\n        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\n    };\n})();\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.App = exports.Grid = void 0;\nvar Component_1 = __webpack_require__(/*! ./Component */ \"./src/client/Component.ts\");\nvar Header_1 = __webpack_require__(/*! ./components/Header */ \"./src/client/components/Header/index.ts\");\nvar Sidebar_1 = __webpack_require__(/*! ./components/Sidebar */ \"./src/client/components/Sidebar/index.ts\");\nvar Footer_1 = __webpack_require__(/*! ./components/Footer */ \"./src/client/components/Footer/index.ts\");\nvar Grid_1 = __webpack_require__(/*! ./components/Grid */ \"./src/client/components/Grid/index.ts\");\nvar Header = new Header_1.Header().render();\nvar Sidebar = Sidebar_1.Sidebar.render();\nvar Footer = Footer_1.Footer.render();\nvar Grid = function (content) {\n    return Grid_1.Container.render(content, {\n        grid: \"\\n    'header  main main main'\\n    'sidebar main main main'\\n    'footer  main main main'\\n  \",\n        gap: '10px 15px',\n        class: 'app-grid',\n    });\n};\nexports.Grid = Grid;\nvar AppComponent = /** @class */ (function (_super) {\n    __extends(AppComponent, _super);\n    function AppComponent(content) {\n        var _this = _super.call(this) || this;\n        _this.content = content;\n        console.log('IVAN_APP_INITIALIZED');\n        return _this;\n    }\n    AppComponent.prototype.didRender = function () {\n        console.log('DID_RENDER');\n    };\n    AppComponent.prototype.render = function () {\n        var template = {\n            header: \"\" + Header,\n            main: \"\" + this.content,\n            sidebar: \"\" + Sidebar,\n            footer: \"\" + Footer,\n        };\n        var templateString = '';\n        for (var region in template) {\n            templateString += \"\\n      <div style='grid-area:\" + region + \";'>\\n        \" + template[region] + \"\\n      </div>\";\n        }\n        return exports.Grid(templateString);\n    };\n    return AppComponent;\n}(Component_1.Component));\nexports.App = {\n    component: AppComponent,\n};\n\n\n//# sourceURL=webpack://ivan/./src/client/App.ts?");
+
+/***/ }),
+
+/***/ "./src/client/Component.ts":
+/*!*********************************!*\
+  !*** ./src/client/Component.ts ***!
+  \*********************************/
 /*! flagged exports */
-/*! export App [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export Component [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_exports__, __webpack_require__ */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/*! runtime requirements: __webpack_exports__ */
+/***/ ((__unused_webpack_module, exports) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.App = void 0;\nvar Header_1 = __webpack_require__(/*! ./components/Header */ \"./src/client/components/Header/index.ts\");\nvar Header = new Header_1.Header().render();\nvar AppComponent = /** @class */ (function () {\n    function AppComponent(content) {\n        this.content = content;\n    }\n    AppComponent.prototype.render = function () {\n        return \"\\n      <div class=\\\"grid container appspace\\\">\\n        \" + Header + \"\\n        \" + this.content + \"\\n      </div>\";\n    };\n    return AppComponent;\n}());\nexports.App = {\n    component: AppComponent,\n};\n\n\n//# sourceURL=webpack://ivan/./src/client/App.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Component = void 0;\nvar Component = /** @class */ (function () {\n    function Component() {\n        var _this = this;\n        this.state = {\n            rendered: false,\n        };\n        this.rendered = setInterval(function () {\n            if (typeof window !== 'undefined') {\n                console.log('IVAN_APP_MOUNTED', _this);\n                _this.didRender();\n                clearInterval(_this.rendered);\n            }\n        }, 10);\n    }\n    Component.prototype.didRender = function () { };\n    Component.prototype.render = function () { };\n    return Component;\n}());\nexports.Component = Component;\n\n\n//# sourceURL=webpack://ivan/./src/client/Component.ts?");
 
 /***/ }),
 
@@ -34,6 +48,33 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 eval("\nvar __assign = (this && this.__assign) || function () {\n    __assign = Object.assign || function(t) {\n        for (var s, i = 1, n = arguments.length; i < n; i++) {\n            s = arguments[i];\n            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))\n                t[p] = s[p];\n        }\n        return t;\n    };\n    return __assign.apply(this, arguments);\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Routes = void 0;\nvar App_1 = __webpack_require__(/*! ./App */ \"./src/client/App.ts\");\nvar pages_1 = __webpack_require__(/*! ./pages/ */ \"./src/client/pages/index.ts\");\nvar pages_2 = __webpack_require__(/*! ./pages/ */ \"./src/client/pages/index.ts\");\nexports.Routes = [\n    __assign(__assign({}, App_1.App), { routes: [\n            __assign(__assign({}, pages_1.Home), { path: '/', exact: true }),\n            __assign(__assign({}, pages_2.NotFound), { path: 'not-found' }),\n        ] }),\n];\n\n\n//# sourceURL=webpack://ivan/./src/client/Routes.ts?");
+
+/***/ }),
+
+/***/ "./src/client/components/Footer/Footer.ts":
+/*!************************************************!*\
+  !*** ./src/client/components/Footer/Footer.ts ***!
+  \************************************************/
+/*! flagged exports */
+/*! export Footer [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_exports__ */
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Footer = void 0;\nvar Footer = /** @class */ (function () {\n    function Footer() {\n    }\n    Footer.render = function () {\n        return \"<footer id=\\\"footer\\\" style=\\\"grid-area:footer\\\">footer-div</footer>\";\n    };\n    return Footer;\n}());\nexports.Footer = Footer;\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Footer/Footer.ts?");
+
+/***/ }),
+
+/***/ "./src/client/components/Footer/index.ts":
+/*!***********************************************!*\
+  !*** ./src/client/components/Footer/index.ts ***!
+  \***********************************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: top-level-this-exports, __webpack_exports__, __webpack_require__ */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\n__exportStar(__webpack_require__(/*! ./Footer */ \"./src/client/components/Footer/Footer.ts\"), exports);\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Footer/index.ts?");
 
 /***/ }),
 
@@ -63,7 +104,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Container = void 0;\nvar sheet_1 = __webpack_require__(/*! ../../sheet */ \"./src/client/sheet.ts\");\nvar Container_css_1 = __webpack_require__(/*! ./Container.css */ \"./src/client/components/Grid/Container.css.ts\");\nvar helpers_1 = __webpack_require__(/*! ./helpers/ */ \"./src/client/components/Grid/helpers/index.ts\");\nsheet_1.insertRule(sheet_1.sheet, Container_css_1.styles);\nvar Container = /** @class */ (function () {\n    function Container() {\n    }\n    Container.render = function (children, props) {\n        var containerProps = {\n            container: props,\n            item: {},\n            isContainer: true,\n        };\n        var style = helpers_1.createProps(containerProps);\n        var grid = props.inlineGrid ? 'inline-grid' : 'grid';\n        var className = grid + \" container \" + helpers_1.hasString(props.class);\n        var hasId = helpers_1.hasString(props.id).length !== 0\n            ? \"id='\" + helpers_1.hasString(props.id).trim() + \"'\"\n            : ''.trim();\n        return \"<div \" + hasId + \" class='\" + className.trim() + \"' style=\\\"\" + style + \"\\\">\" + children + \"</div>\";\n    };\n    return Container;\n}());\nexports.Container = Container;\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Grid/Container.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Container = void 0;\nvar sheet_1 = __webpack_require__(/*! ../../sheet */ \"./src/client/sheet.ts\");\nvar Container_css_1 = __webpack_require__(/*! ./Container.css */ \"./src/client/components/Grid/Container.css.ts\");\nvar helpers_1 = __webpack_require__(/*! ./helpers/ */ \"./src/client/components/Grid/helpers/index.ts\");\nsheet_1.insertRule(sheet_1.sheet, Container_css_1.styles);\nvar Container = /** @class */ (function () {\n    function Container() {\n    }\n    Container.render = function (children, props) {\n        var containerProps = {\n            container: props,\n            item: {},\n            isContainer: true,\n        };\n        var style = helpers_1.createProps(containerProps);\n        var grid = props.inlineGrid ? 'inline-grid' : 'grid';\n        var className = grid + \" container \" + helpers_1.hasString(props.class);\n        var hasId = helpers_1.hasString(props.id).length !== 0\n            ? \"id='\" + helpers_1.hasString(props.id).trim() + \"'\"\n            : ''.trim();\n        return \"<div \" + hasId + \" class='\" + className.trim() + \"' style=\\\"display:\" + grid + \";\" + style + \"\\\">\" + children + \"</div>\";\n    };\n    return Container;\n}());\nexports.Container = Container;\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Grid/Container.ts?");
 
 /***/ }),
 
@@ -148,7 +189,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Header = void 0;\nvar Link_1 = __webpack_require__(/*! ../Link */ \"./src/client/components/Link/index.ts\");\nvar data_1 = __webpack_require__(/*! ./data */ \"./src/client/components/Header/data.ts\");\nvar Header_inline_css_1 = __webpack_require__(/*! ./Header.inline.css */ \"./src/client/components/Header/Header.inline.css.ts\");\nvar sheet_1 = __webpack_require__(/*! ../../sheet */ \"./src/client/sheet.ts\");\nvar style = sheet_1.inlineStyle(Header_inline_css_1.styles);\nvar Header = /** @class */ (function () {\n    function Header() {\n        this.renderNavItems = this.renderNavItems.bind(this);\n    }\n    Header.prototype.createEvents = function () { };\n    Header.prototype.createProps = function () { };\n    Header.prototype.didRender = function () { };\n    Header.prototype.renderNavItems = function () {\n        return data_1.navData\n            .map(function (item) {\n            var linkProps = {\n                innerHTML: item.name,\n                to: item.to,\n                id: item.name + \"-nav\",\n            };\n            var link = new Link_1.LinkComponent(linkProps).render();\n            return link;\n        })\n            .join('');\n    };\n    Header.prototype.render = function () {\n        return style + \"<header class=\\\"header\\\">\" + this.renderNavItems() + \"</header>\";\n    };\n    return Header;\n}());\nexports.Header = Header;\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Header/Header.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Header = void 0;\nvar Link_1 = __webpack_require__(/*! ../Link */ \"./src/client/components/Link/index.ts\");\nvar data_1 = __webpack_require__(/*! ./data */ \"./src/client/components/Header/data.ts\");\nvar Header_inline_css_1 = __webpack_require__(/*! ./Header.inline.css */ \"./src/client/components/Header/Header.inline.css.ts\");\nvar sheet_1 = __webpack_require__(/*! ../../sheet */ \"./src/client/sheet.ts\");\nvar style = sheet_1.inlineStyle(Header_inline_css_1.styles).trim();\nvar Header = /** @class */ (function () {\n    function Header() {\n        this.renderNavItems = this.renderNavItems.bind(this);\n    }\n    Header.prototype.createEvents = function () { };\n    Header.prototype.createProps = function () { };\n    Header.prototype.didRender = function () { };\n    Header.prototype.renderNavItems = function () {\n        return data_1.navData\n            .map(function (item) {\n            var linkProps = {\n                innerHTML: item.name,\n                to: item.to,\n                id: item.name + \"-nav\",\n            };\n            var link = new Link_1.LinkComponent(linkProps).render();\n            return link;\n        })\n            .join('');\n    };\n    Header.prototype.render = function () {\n        return style + \"<header class=\\\"header\\\" style=\\\"grid-area:header;\\\">\" + this.renderNavItems() + \"</header>\";\n    };\n    return Header;\n}());\nexports.Header = Header;\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Header/Header.ts?");
 
 /***/ }),
 
@@ -190,7 +231,7 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 /*! runtime requirements: __webpack_exports__ */
 /***/ ((__unused_webpack_module, exports) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.styles = void 0;\nexports.styles = [\n    \"\\n  .link-route {\\n    color:green\\n  }\\n\",\n];\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Link/Link.css.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.styles = void 0;\nexports.styles = [\n    \"\\n  .link-route {\\n    text-decoration: none;\\n  }\\n\",\n    \".link-route:hover {\\n  color:purple;\\n}\",\n];\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Link/Link.css.ts?");
 
 /***/ }),
 
@@ -220,7 +261,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.LinkSkeleton = void 0;\nvar styles_1 = __webpack_require__(/*! ../../styles/ */ \"./src/client/styles/index.ts\");\nexports.LinkSkeleton = {\n    style: \"<style>\\n  .skeleton {\\n    background-color: \" + styles_1.skeletonColor + \";\\n  }\\n  .link {\\n    height: 30px;\\n    width: 90px;\\n    margin-right: 1rem;\\n  }\\n</style>\",\n    component: \"<div class=\\\"skeleton link\\\" style=\\\"background-color: \" + styles_1.skeletonColor + \"; height: 30px;width: 90px;margin-right: 1rem;\\\"></div>\\n\",\n};\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Link/Skeleton.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.LinkSkeleton = void 0;\nvar styles_1 = __webpack_require__(/*! ../../styles/ */ \"./src/client/styles/index.ts\");\nexports.LinkSkeleton = {\n    style: \"background-color: \" + styles_1.skeletonColor + \"; height: 30px;width: 90px;margin-right: 1rem;\",\n    component: function (style) { return \"<div class=\\\"skeleton link\\\" style=\\\"\" + style + \"\\\"></div>\\n\"; },\n};\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Link/Skeleton.ts?");
 
 /***/ }),
 
@@ -236,6 +277,33 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 
 /***/ }),
 
+/***/ "./src/client/components/Sidebar/Sidebar.ts":
+/*!**************************************************!*\
+  !*** ./src/client/components/Sidebar/Sidebar.ts ***!
+  \**************************************************/
+/*! flagged exports */
+/*! export Sidebar [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export __esModule [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_exports__ */
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Sidebar = void 0;\nvar Sidebar = /** @class */ (function () {\n    function Sidebar() {\n    }\n    Sidebar.render = function () {\n        return \"<div id='sidebar' style=\\\"grid-area:sidebar;\\\">Sidebar</div>\";\n    };\n    return Sidebar;\n}());\nexports.Sidebar = Sidebar;\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Sidebar/Sidebar.ts?");
+
+/***/ }),
+
+/***/ "./src/client/components/Sidebar/index.ts":
+/*!************************************************!*\
+  !*** ./src/client/components/Sidebar/index.ts ***!
+  \************************************************/
+/*! unknown exports (runtime-defined) */
+/*! runtime requirements: top-level-this-exports, __webpack_exports__, __webpack_require__ */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\n__exportStar(__webpack_require__(/*! ./Sidebar */ \"./src/client/components/Sidebar/Sidebar.ts\"), exports);\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Sidebar/index.ts?");
+
+/***/ }),
+
 /***/ "./src/client/components/Skeleton/Skeleton.ts":
 /*!****************************************************!*\
   !*** ./src/client/components/Skeleton/Skeleton.ts ***!
@@ -247,7 +315,7 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 /*! runtime requirements: __webpack_exports__ */
 /***/ ((__unused_webpack_module, exports) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Skeleton = void 0;\nvar Skeleton = /** @class */ (function () {\n    function Skeleton() {\n    }\n    Skeleton.render = function (props) {\n        return \"\" + props.component;\n    };\n    return Skeleton;\n}());\nexports.Skeleton = Skeleton;\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Skeleton/Skeleton.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Skeleton = void 0;\nvar Skeleton = /** @class */ (function () {\n    function Skeleton() {\n    }\n    Skeleton.render = function (props) {\n        return \"\" + props.component(props.style);\n    };\n    return Skeleton;\n}());\nexports.Skeleton = Skeleton;\n\n\n//# sourceURL=webpack://ivan/./src/client/components/Skeleton/Skeleton.ts?");
 
 /***/ }),
 
@@ -273,7 +341,7 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nvar App_1 = __webpack_require__(/*! ./App */ \"./src/client/App.ts\");\nvar helpers_1 = __webpack_require__(/*! ../helpers */ \"./src/helpers/index.ts\");\nvar Routes_1 = __webpack_require__(/*! ./Routes */ \"./src/client/Routes.ts\");\nvar sheet_1 = __webpack_require__(/*! ./sheet */ \"./src/client/sheet.ts\");\n// construct style sheet\nhelpers_1.constructSheet(sheet_1.sheet);\n// init client app\nvar init = function () {\n    var root = document.getElementById('root');\n    var app = new App_1.App.component(helpers_1.renderRoutes(Routes_1.Routes, null));\n    if (root) {\n        root.innerHTML = app.render();\n    }\n    else {\n        throw new Error('An Error has occurred');\n    }\n};\nhelpers_1.onUrlChange(init);\n\n\n//# sourceURL=webpack://ivan/./src/client/index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nvar App_1 = __webpack_require__(/*! ./App */ \"./src/client/App.ts\");\nvar helpers_1 = __webpack_require__(/*! ../helpers */ \"./src/helpers/index.ts\");\nvar Routes_1 = __webpack_require__(/*! ./Routes */ \"./src/client/Routes.ts\");\nvar sheet_1 = __webpack_require__(/*! ./sheet */ \"./src/client/sheet.ts\");\n// construct style sheet\nhelpers_1.constructSheet(sheet_1.sheet);\n// init client app\nvar init = function () {\n    var root = document.getElementById('root');\n    var app = new App_1.App.component(helpers_1.renderRoutes(Routes_1.Routes, null));\n    if (root) {\n        root.innerHTML = app.render();\n    }\n    else {\n        throw new Error('An Error has occurred');\n    }\n};\n// \"Hydrate\"\nhelpers_1.onUrlChange(init);\n\n\n//# sourceURL=webpack://ivan/./src/client/index.ts?");
 
 /***/ }),
 
@@ -288,7 +356,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nvar 
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Home = void 0;\nvar Grid_1 = __webpack_require__(/*! ../components/Grid */ \"./src/client/components/Grid/index.ts\");\nvar renderGrid = function () {\n    return [\n        { region: 'main', name: 'main-1', gridColumnStart: '2' },\n        { region: 'main', name: 'main-2', gridColumnStart: '2' },\n        { region: 'main', name: 'main-3', gridColumnStart: '2' },\n        { region: 'header', name: 'header-1', gridColumnStart: '1' },\n        { region: 'header', name: 'header-2', gridColumnStart: '1' },\n        { region: 'header', name: 'header-3', gridColumnStart: '1' },\n        { region: 'footer', name: 'footer-1', gridColumnStart: '3' },\n        { region: 'footer', name: 'footer-2', gridColumnStart: '3' },\n        { region: 'footer', name: 'footer-3', gridColumnStart: '3' },\n    ]\n        .map(function (item) {\n        return Grid_1.GridItem.render(item.name, {\n            gridArea: item.region + \" \" + item.gridColumnStart,\n        });\n    })\n        .join('');\n};\nvar HomeComponent = /** @class */ (function () {\n    function HomeComponent() {\n    }\n    HomeComponent.prototype.render = function () {\n        return \"\\n      <div id='home-page'>\\n        \" + Grid_1.Container.render(renderGrid(), {\n            grid: \"\\n          'header header header'\\n          'main   main   main  '\\n          'footer footer footer'\\n          \",\n            gap: '10px 15px',\n            class: 'home-grid',\n        }) + \"\\n      </div>\\n    \";\n    };\n    return HomeComponent;\n}());\nexports.Home = {\n    component: HomeComponent,\n};\n\n\n//# sourceURL=webpack://ivan/./src/client/pages/Home.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Home = void 0;\nvar Grid_1 = __webpack_require__(/*! ../components/Grid */ \"./src/client/components/Grid/index.ts\");\nvar renderGrid = function () {\n    return [{ region: 'main', name: 'main-1', gridColumnStart: '1' }]\n        .map(function (item) {\n        return Grid_1.GridItem.render(item.name, {\n            gridArea: item.region + \" / \" + item.gridColumnStart,\n        });\n    })\n        .join('');\n};\nvar HomeComponent = /** @class */ (function () {\n    function HomeComponent() {\n    }\n    HomeComponent.prototype.render = function () {\n        return \"\\n      <div id='home-page'>\\n        \" + Grid_1.Container.render(renderGrid(), {\n            grid: \"\\n          'main main main'\\n          \",\n            gap: '10px 15px',\n            class: 'home-grid',\n        }) + \"\\n      </div>\\n    \";\n    };\n    return HomeComponent;\n}());\nexports.Home = {\n    component: HomeComponent,\n};\n\n\n//# sourceURL=webpack://ivan/./src/client/pages/Home.ts?");
 
 /***/ }),
 
@@ -375,7 +443,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 /*! runtime requirements: __webpack_exports__, __webpack_require__ */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Html = void 0;\nvar Header_1 = __webpack_require__(/*! ../client/components/Header */ \"./src/client/components/Header/index.ts\");\nvar Header = new Header_1.Header().render();\nvar Html = function (route) { return \"\\n    <html lang='en-us'>\\n      <head>\\n      <title>Ivan!</title>\\n      <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1\\\">\\n      <meta name=\\\"description\\\" content=\\\"portfolio:javascript developer\\\">\\n      <meta name=\\\"robots\\\" content=\\\"index, follow\\\" />\\n      <meta charset=\\\"UTF-8\\\">\\n      <link rel=\\\"icon\\\" href=\\\"data:,\\\">\\n      </head>\\n      <body>\\n        <div id='root'>\\n        \" + Header + \"\\n        \" + route + \"\\n        </div>\\n        <script src='/bundle.js'></script>\\n      </body>\\n    </html>\"; };\nexports.Html = Html;\n\n\n//# sourceURL=webpack://ivan/./src/helpers/Html.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Html = void 0;\nvar Header_1 = __webpack_require__(/*! ../client/components/Header */ \"./src/client/components/Header/index.ts\");\nvar Footer_1 = __webpack_require__(/*! ../client/components/Footer */ \"./src/client/components/Footer/index.ts\");\nvar Sidebar_1 = __webpack_require__(/*! ../client/components/Sidebar */ \"./src/client/components/Sidebar/index.ts\");\nvar App_1 = __webpack_require__(/*! ../client/App */ \"./src/client/App.ts\");\nvar Header = new Header_1.Header().render();\nvar Footer = Footer_1.Footer.render();\nvar Sidebar = Sidebar_1.Sidebar.render();\nvar Html = function (route) { return \"\\n    <html lang='en-us'>\\n      <head>\\n      <title>Ivan!</title>\\n      <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1\\\">\\n      <meta name=\\\"description\\\" content=\\\"portfolio:javascript developer\\\">\\n      <meta name=\\\"robots\\\" content=\\\"index, follow\\\" />\\n      <meta charset=\\\"UTF-8\\\">\\n      <link rel=\\\"icon\\\" href=\\\"data:,\\\">\\n      </head>\\n      <body>\\n        <div id='root'>\\n        \" + App_1.Grid(\"        \\n            \" + Header + \"\\n            \" + Sidebar + \"\\n            \" + route + \"\\n            \" + Footer + \"\\n          \") + \"\\n        </div>\\n        <script src='/bundle.js'></script>\\n      </body>\\n    </html>\"; };\nexports.Html = Html;\n\n\n//# sourceURL=webpack://ivan/./src/helpers/Html.ts?");
 
 /***/ }),
 
